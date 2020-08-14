@@ -38,3 +38,6 @@ class TestButton extends HTMLElement implements CustomElement {
 
 
 
+## License
+
+MIT © 2020 [Edwin Martin](https://bitstorm.org/)
