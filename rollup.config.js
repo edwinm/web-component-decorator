@@ -10,12 +10,6 @@ export default {
       name: "bundle",
       sourcemap: true,
     },
-    {
-      file: "dist/bundle.common.min.js",
-      format: "cjs",
-      name: "bundle",
-      sourcemap: true,
-    },
   ],
   plugins: [
     typescript({

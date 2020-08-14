@@ -2,7 +2,7 @@
   "name": "web-component-decorator",
   "version": "0.1.0",
   "description": "Lightweight decorators for web components",
-  "main": "dist/bundle.common.min.js",
+  "main": "dist/bundle.min.js",
   "module": "dist/bundle.min.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
