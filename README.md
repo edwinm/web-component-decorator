@@ -2,4 +2,39 @@
 
 # Web component decorator
 
-Lightweight decorators for web components
+> Lightweight decorators for web components
+
+## Installation
+
+```bash
+npm install --save-dev web-component-decorator
+```
+
+## Usage
+```ts
+import { attribute, CustomElement, define } from "web-component-decorator";
+
+@define("test-button")
+class TestButton extends HTMLElement implements CustomElement {
+  constructor() {
+    super();
+
+    this.attachShadow({ mode: "open" });
+
+    this.shadowRoot.innerHTML = `
+          <button id="button">
+              <span id="icon"></span>          
+              <slot></slot>
+          </button>
+        `;
+  }
+
+  @attribute("icon")
+  setIcon(icon: string, oldIcon: string) {
+    this.shadowRoot.getElementById("icon").classList.add(icon);
+  }
+}
+```
+
+
+
