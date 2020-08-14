@@ -29,7 +29,7 @@ class TestButton extends HTMLElement implements CustomElement {
   }
 
   @attribute("icon")
-  setIcon(icon: string, oldIcon:string) {
+  setIcon(icon: string) {
     this.icon = icon;
   }
 
