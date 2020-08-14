@@ -53,11 +53,21 @@ describe("Web component decorator", () => {
   });
 
   it("Test attribute on function", () => {
-    const button = document.getElementById("button");
+    const button = <TestButton>document.getElementById("button");
 
     button.setAttribute("icon", "close");
 
-    assert.equal((<any>button).getIcon(), "close");
+    assert.equal(button.getAttribute("icon"), "close");
+    assert.equal(button.getIcon(), "close");
+  });
+
+  it("Test attribute on setter", () => {
+    const button = <TestButton>document.getElementById("button");
+
+    button.setAttribute("size", "10");
+
+    assert.equal(button.getAttribute("size"), "10");
+    assert.equal(button.getSize(), "10");
   });
 
 });
