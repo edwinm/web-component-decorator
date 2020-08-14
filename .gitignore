@@ -1,4 +1,5 @@
 node_modules
-built
 .idea
-coverage
+coverage/lcov-report
+coverage/Chrome*
+coverage/Firefox*
