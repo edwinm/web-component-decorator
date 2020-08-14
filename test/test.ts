@@ -1,6 +1,6 @@
 import * as assert from "assert";
 import { attribute, CustomElement, define } from "../src";
-import doc = Mocha.reporters.doc;
+import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js';
 
 /**
  * Test framework used:
@@ -8,7 +8,7 @@ import doc = Mocha.reporters.doc;
  * Assert https://nodejs.org/api/assert.html
  */
 
-// @define("test-button")
+@define("test-button")
 class TestButton extends HTMLElement implements CustomElement {
   private icon = "";
   private buttonSize = "";
@@ -28,12 +28,12 @@ class TestButton extends HTMLElement implements CustomElement {
         `;
   }
 
-  // @attribute("icon")
+  @attribute("icon")
   setIcon(icon: string, oldIcon:string) {
     this.icon = icon;
   }
 
-  // @attribute("size")
+  @attribute("size")
   set size(buttonSize: string) {
     this.buttonSize = buttonSize;
   }
@@ -46,29 +46,18 @@ class TestButton extends HTMLElement implements CustomElement {
     return this.buttonSize;
   }
 }
-customElements.define("test-button", TestButton);
 
 describe("Web component decorator", () => {
   beforeEach(() => {
-    // const button = document.createElement("test-button");
-    // button.textContent = "Click me";
-    // button.id = "button";
-    // document.body.appendChild(button);
-
-    // document.body.innerHTML = "<test-button id='button'>Click me</test-button>";
-
-    const button = new TestButton();
-    document.body.appendChild(button);
-
+    document.body.innerHTML = "<test-button id='button'>Click me</test-button>";
   });
 
   it("Test attribute on function", () => {
-    // const button = document.getElementById("button");
-    const button = new TestButton();
+    const button = document.getElementById("button");
 
     button.setAttribute("icon", "close");
 
-    assert.equal((<TestButton>button).getIcon(), "close");
+    assert.equal((<any>button).getIcon(), "close");
   });
 
 });
