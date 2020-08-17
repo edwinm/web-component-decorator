@@ -4,15 +4,16 @@
   "description": "Lightweight decorators for web components",
   "main": "dist/bundle.min.js",
   "module": "dist/bundle.min.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/bundle.min.d.ts",
   "sideEffects": false,
   "scripts": {
     "start": "http-server -o demo/ --silent",
-    "build": "rollup --config --sourcemap",
+    "build": "rollup --config --sourcemap && move-cli dist/index.d.ts dist/bundle.min.d.ts",
     "dev": "rollup --config --sourcemap --watch",
     "release": "npm i --package-lock && npm run lint && npm test && npm run build && npm publish",
     "test": "karma start --browsers ChromeHeadless,FirefoxHeadless",
-    "lint": "npx eslint . --ext .js,.ts"
+    "lint": "eslint . --ext .js,.ts",
+    "demo": "rollup --config demo/rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,7 @@
   },
   "files": [
     "src/index.ts",
-    "dist/index.d.ts",
+    "dist/bundle.min.d.ts",
     "dist/bundle.min.js",
     "dist/bundle.min.js.map"
   ],
@@ -53,6 +54,7 @@
     "karma-mocha": "^2.0.1",
     "karma-typescript": "^5.1.0",
     "mocha": "^8.1.1",
+    "move-cli": "^1.2.1",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "rollup": "^2.26.0",

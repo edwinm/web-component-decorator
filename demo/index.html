@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Demo of web-component-decorator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    .code {
+      font-family: monospace;
+    }
+    fieldset {
+      margin-top: 30px;
+    }
+  </style>
+  <script src="build/script.js"></script>
+</head>
+<body>
+
+<h2>Demo of web-component-decorator</h2>
+
+<p>Below is a simple button defined as a web component using the <span class="code">@define</span> and <span class="code">@attribute</span> decorators.
+  You can set the icon of the button by changing the <span class="code">icon</span> attribute.
+  You can do this by clicking the 'do' buttons below.</p>
+
+<p>View <span class="code">demo/script.ts</span> to see the button implementation.</p>
+
+<my-button id="butn" icon="favorite">button</my-button>
+
+<fieldset>
+  <legend>Set icon attribute</legend>
+  <button onclick="document.getElementById('butn').setAttribute('icon', 'build')">do</button> <span class="code">document.getElementById('b').setAttribute('icon', 'build')</span><br>
+  <button onclick="document.getElementById('butn').setAttribute('icon', 'favorite')">do</button> <span class="code">document.getElementById('b').setAttribute('icon', 'favorite')</span><br>
+  <button onclick="document.getElementById('butn').setAttribute('icon', 'visibility')">do</button> <span class="code">document.getElementById('b').setAttribute('icon', 'visibility')</span>
+</fieldset>
+
+</body>
+</html>
