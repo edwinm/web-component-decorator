@@ -5,33 +5,150 @@
   <title>Demo of web-component-decorator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
+    pre {
+      display: inline;
+    }
+
     .code {
       font-family: monospace;
     }
+
+    code {
+      display: block;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
     fieldset {
       margin-top: 30px;
     }
   </style>
-  <script src="build/script.js"></script>
+  <script src="build/bundle.js"></script>
 </head>
 <body>
 
+<!--
+Run `npm start` to see this demo in action.
+-->
+
 <h2>Demo of web-component-decorator</h2>
 
-<p>Below is a simple button defined as a web component using the <span class="code">@define</span> and <span class="code">@attribute</span> decorators.
-  You can set the icon of the button by changing the <span class="code">icon</span> attribute.
-  You can do this by clicking the 'do' buttons below.</p>
+<p>Below is a simple button defined as a web component using the <span class="code">@define</span> and <span
+    class="code">@attribute</span> decorators.
+  This is the HTML code of the button:</p>
 
-<p>View <span class="code">demo/script.ts</span> to see the button implementation.</p>
+<pre style='color:#000000;background:#ffffff;'><span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>my-button</span><span
+    style='color:#274796; '> </span><span style='color:#074726; '>id</span><span style='color:#808030; '>=</span><span
+    style='color:#0000e6; '>"btn"</span><span style='color:#274796; '> icon</span><span style='color:#808030; '>=</span><span
+    style='color:#0000e6; '>"favorite"</span><span style='color:#a65700; '>></span>button<span style='color:#a65700; '>&lt;/</span><span
+    style='color:#5f5035; '>my-button</span><span style='color:#a65700; '>></span></pre>
 
-<my-button id="butn" icon="favorite">button</my-button>
+<p>You can set the icon of the button by changing the <span class="code">icon</span> attribute.
+  You can do this by clicking the 'do' buttons below. </p>
+
+<my-button id="btn" icon="favorite">button</my-button>
 
 <fieldset>
   <legend>Set icon attribute</legend>
-  <button onclick="document.getElementById('butn').setAttribute('icon', 'build')">do</button> <span class="code">document.getElementById('butn').setAttribute('icon', 'build')</span><br>
-  <button onclick="document.getElementById('butn').setAttribute('icon', 'favorite')">do</button> <span class="code">document.getElementById('butn').setAttribute('icon', 'favorite')</span><br>
-  <button onclick="document.getElementById('butn').setAttribute('icon', 'visibility')">do</button> <span class="code">document.getElementById('butn').setAttribute('icon', 'visibility')</span>
+  <button onclick="document.getElementById('btn').setAttribute('icon', 'build')">do</button>
+  <pre style='color:#000000;background:#ffffff;'>document<span style='color:#808030; '>.</span>getElementById<span
+      style='color:#808030; '>(</span><span style='color:#800000; '>'</span><span
+      style='color:#0000e6; '>btn</span><span style='color:#800000; '>'</span><span
+      style='color:#808030; '>)</span><span style='color:#808030; '>.</span>setAttribute<span
+      style='color:#808030; '>(</span><span style='color:#800000; '>'</span><span
+      style='color:#0000e6; '>icon</span><span style='color:#800000; '>'</span><span
+      style='color:#808030; '>,</span> <span style='color:#800000; '>'</span><span
+      style='color:#0000e6; '>build</span><span style='color:#800000; '>'</span><span
+      style='color:#808030; '>)</span></pre>
+  <br>
+  <button onclick="document.getElementById('btn').setAttribute('icon', 'favorite')">do</button>
+  <pre style='color:#000000;background:#ffffff;'>document<span style='color:#808030; '>.</span>getElementById<span
+      style='color:#808030; '>(</span><span style='color:#800000; '>'</span><span
+      style='color:#0000e6; '>btn</span><span style='color:#800000; '>'</span><span
+      style='color:#808030; '>)</span><span style='color:#808030; '>.</span>setAttribute<span
+      style='color:#808030; '>(</span><span style='color:#800000; '>'</span><span
+      style='color:#0000e6; '>icon</span><span style='color:#800000; '>'</span><span
+      style='color:#808030; '>,</span> <span style='color:#800000; '>'</span><span
+      style='color:#0000e6; '>favorite</span><span style='color:#800000; '>'</span><span
+      style='color:#808030; '>)</span></pre>
+  <br>
+  <button onclick="document.getElementById('btn').setAttribute('icon', 'visibility')">do</button>
+  <pre style='color:#000000;background:#ffffff;'>document<span style='color:#808030; '>.</span>getElementById<span
+      style='color:#808030; '>(</span><span style='color:#800000; '>'</span><span
+      style='color:#0000e6; '>btn</span><span style='color:#800000; '>'</span><span
+      style='color:#808030; '>)</span><span style='color:#808030; '>.</span>setAttribute<span
+      style='color:#808030; '>(</span><span style='color:#800000; '>'</span><span
+      style='color:#0000e6; '>icon</span><span style='color:#800000; '>'</span><span
+      style='color:#808030; '>,</span> <span style='color:#800000; '>'</span><span
+      style='color:#0000e6; '>visibility</span><span style='color:#800000; '>'</span><span
+      style='color:#808030; '>)</span></pre>
 </fieldset>
+
+<p>Below you can find the source code of the button web component, which can be found in <span class="code">demo/my-button.ts</span>.
+</p>
+
+<code>
+  <pre style='color:#000000;background:#ffffff;'><span style='color:#800000; font-weight:bold; '>import</span> <span
+      style='color:#800080; '>{</span> attribute<span style='color:#808030; '>,</span> CustomElement<span
+      style='color:#808030; '>,</span> define <span style='color:#800080; '>}</span> from <span style='color:#800000; '>"</span><span
+      style='color:#0000e6; '>web-component-decorator</span><span style='color:#800000; '>"</span><span
+      style='color:#800080; '>;</span>
+
+@define<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>my-button</span><span
+        style='color:#800000; '>"</span><span style='color:#808030; '>)</span>
+<span style='color:#800000; font-weight:bold; '>class</span> MyButton <span style='color:#800000; font-weight:bold; '>extends</span> HTMLElement <span
+        style='color:#800000; font-weight:bold; '>implements</span> CustomElement <span style='color:#800080; '>{</span>
+  <span style='color:#797997; '>constructor</span><span style='color:#808030; '>(</span><span
+        style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+    <span style='color:#800000; font-weight:bold; '>super</span><span style='color:#808030; '>(</span><span
+        style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+    <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>attachShadow<span
+        style='color:#808030; '>(</span><span style='color:#800080; '>{</span> mode<span
+        style='color:#800080; '>:</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>open</span><span
+        style='color:#800000; '>"</span> <span style='color:#800080; '>}</span><span
+        style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+    <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>shadowRoot<span
+        style='color:#808030; '>.</span>innerHTML <span style='color:#808030; '>=</span> <span
+        style='color:#800000; '>`</span><span style='color:#0000e6; '></span>
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&lt;style></span>
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;button {</span>
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;padding: 5px;</span>
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;}</span>
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;#icon {</span>
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;vertical-align: middle;</span>
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;}</span>
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&lt;/style></span>
+
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&lt;button id="button"></span>
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&lt;img id="icon" alt="" width="16" height="16">          </span>
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&lt;slot>&lt;/slot></span>
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&lt;/button></span>
+<span style='color:#0000e6; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span
+        style='color:#800000; '>`</span><span style='color:#800080; '>;</span>
+  <span style='color:#800080; '>}</span>
+
+  @attribute<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>icon</span><span
+        style='color:#800000; '>"</span><span style='color:#808030; '>)</span>
+  setIcon<span style='color:#808030; '>(</span>icon<span style='color:#800080; '>:</span> string<span
+        style='color:#808030; '>,</span> oldIcon<span style='color:#800080; '>:</span> string<span
+        style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+    <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>shadowRoot<span
+        style='color:#808030; '>.</span>getElementById<span style='color:#808030; '>(</span><span
+        style='color:#800000; '>"</span><span style='color:#0000e6; '>icon</span><span
+        style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>setAttribute<span
+        style='color:#808030; '>(</span><span style='color:#800000; '>'</span><span
+        style='color:#0000e6; '>src</span><span style='color:#800000; '>'</span><span
+        style='color:#808030; '>,</span> <span style='color:#800000; '>`</span><span
+        style='color:#0000e6; '>icons/</span><span style='color:#800000; '>${</span><span
+        style='color:#797997; '>icon</span><span style='color:#800000; '>}</span><span
+        style='color:#0000e6; '>-24px.svg</span><span style='color:#800000; '>`</span><span
+        style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+  <span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span>
+</pre>
+</code>
 
 </body>
 </html>

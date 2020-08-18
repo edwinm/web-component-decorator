@@ -13,7 +13,7 @@
     "release": "npm i --package-lock && npm run lint && npm test && npm run build && npm publish",
     "test": "karma start --browsers ChromeHeadless,FirefoxHeadless",
     "lint": "eslint . --ext .js,.ts",
-    "demo": "rollup --config demo/rollup.config.js"
+    "build-demo": "rollup --config demo/rollup.config.js"
   },
   "repository": {
     "type": "git",

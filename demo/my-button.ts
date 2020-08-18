@@ -1,11 +1,13 @@
+/* Replace "../dist/bundle.min" with "web-component-decorator" in your own project */
 import { attribute, CustomElement, define } from "../dist/bundle.min";
 
 /**
  * Demo of web-component-decorator
  *
- * Run `npm run demo` to compile the source.
+ * Run `npm start` to see this demo in action.
+ *
+ * Run `npm run build-demo` to compile the source.
  */
-
 @define("my-button")
 class MyButton extends HTMLElement implements CustomElement {
   constructor() {
@@ -22,6 +24,7 @@ class MyButton extends HTMLElement implements CustomElement {
               vertical-align: middle;
             }
           </style>
+
           <button id="button">
               <img id="icon" alt="" width="16" height="16">          
               <slot></slot>

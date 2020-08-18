@@ -37,7 +37,9 @@
     /**
      * Demo of web-component-decorator
      *
-     * Run `npm run demo` to compile the source.
+     * Run `npm start` to see this demo in action.
+     *
+     * Run `npm run build-demo` to compile the source.
      */
     let MyButton = class MyButton extends HTMLElement {
         constructor() {
@@ -52,6 +54,7 @@
               vertical-align: middle;
             }
           </style>
+
           <button id="button">
               <img id="icon" alt="" width="16" height="16">          
               <slot></slot>
@@ -74,4 +77,4 @@
     ], MyButton);
 
 }());
-//# sourceMappingURL=script.js.map
+//# sourceMappingURL=bundle.js.map
