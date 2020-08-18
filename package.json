@@ -25,7 +25,17 @@
     "dist/bundle.min.js",
     "dist/bundle.min.js.map"
   ],
-  "author": {
+    "keywords": [
+        "typescript",
+        "front-end",
+        "decorator",
+        "web-components",
+        "define",
+        "attribute",
+        "lightweight",
+        "micro"
+    ],
+    "author": {
     "name": "Edwin Martin",
     "email": "edwin@bitstorm.org",
     "url": "https://bitstorm.org/"
