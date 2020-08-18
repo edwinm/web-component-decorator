@@ -4,26 +4,43 @@
 
 > Lightweight decorators for web components
 
+Replace the web component functions `customElements.define(…)`, `observedAttributes()` and `attributeChangedCallback(…)` with the cleaner decorators `@define(…)` and `@attribute(…)`.
+
+Advantages over other solutions:
+- Includes Typescript definitions
+- Lightweight
+- Non opinionated
+- Extend any HTML element
+
 ## Installation
 
 ```bash
 npm install --save-dev web-component-decorator
 ```
 
-## Usage
+## Example
 ```ts
 import { attribute, CustomElement, define } from "web-component-decorator";
 
-@define("test-button")
-class TestButton extends HTMLElement implements CustomElement {
+@define("my-button")
+class MyButton extends HTMLElement implements CustomElement {
   constructor() {
     super();
 
     this.attachShadow({ mode: "open" });
 
     this.shadowRoot.innerHTML = `
+          <style>
+            button {
+              padding: 5px;
+            }
+            #icon {
+              vertical-align: middle;
+            }
+          </style>
+
           <button id="button">
-              <span id="icon"></span>          
+              <img id="icon" alt="" width="16" height="16">          
               <slot></slot>
           </button>
         `;
@@ -31,12 +48,44 @@ class TestButton extends HTMLElement implements CustomElement {
 
   @attribute("icon")
   setIcon(icon: string, oldIcon: string) {
-    this.shadowRoot.getElementById("icon").classList.add(icon);
+    this.shadowRoot.getElementById("icon").setAttribute('src', `icons/${icon}-24px.svg`);
   }
 }
 ```
 
+This example can be found in the `demo` directory in the repository.
 
+## API
+
+### `@define(tagname [, options])`
+
+#### string tagname
+Name of the tag to use. Should include a '-' (minus)
+#### object options (optional)
+Object with the form `{ extends: tagname }`, where tagname is the name of the HTML tag to extend.
+
+Replacement for `customElements.define(tagname, classname, options)`.
+To be put right above the class declaration of the web component.
+
+### `@attribute(attributename)`
+
+#### string attributename
+Name of the attribute.
+
+Replacement for `observedAttributes()` and `attributeChangedCallback(…)`. 
+
+The annotated function has the signature:
+
+#### anyName(newValue, oldValue) {}
+Function to be called with the new and old value of the attribute.
+
+### `CustomElement`
+
+Interface to implement to get access to the web component type definitions.
+
+## Tip
+
+In `tsconfig.json`, don't forget to add `"experimentalDecorators": true` to `compilerOptions`.
 
 ## License
 
