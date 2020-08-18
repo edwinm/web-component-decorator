@@ -59,25 +59,22 @@ This example can be found in the `demo` directory in the repository.
 
 ### `@define(tagname [, options])`
 
-#### string tagname
-Name of the tag to use. Should include a '-' (minus)
-#### object options (optional)
-Object with the form `{ extends: tagname }`, where tagname is the name of the HTML tag to extend.
+**`tagname: string`** - Name of the tag to use. Should include a '-' (minus)
+
+**`options: object` (optional)** - Object with the form `{ extends: string }`, where extends is the name of the HTML tag to extend.
 
 Replacement for `customElements.define(tagname, classname, options)`.
 To be put right above the class declaration of the web component.
 
 ### `@attribute(attributename)`
 
-#### string attributename
-Name of the attribute.
+**`attributename: string`** - Name of the attribute.
 
 Replacement for `observedAttributes()` and `attributeChangedCallback(…)`. 
 
-The annotated function has the signature:
+The decorated function has the following signature:
 
-#### anyName(newValue, oldValue) {}
-Function to be called with the new and old value of the attribute.
+**`anyName(newValue: string, oldValue:string): void`** - Function to be called with the new and old value of the attribute.
 
 ### `CustomElement`
 
