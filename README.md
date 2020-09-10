@@ -2,15 +2,17 @@
 
 # Web component decorator
 
-> Lightweight decorators for web components
+> Lightweight TypeScript decorators for web components for easier handling of attribute changes and cleaner code
 
-Replace the web component functions `customElements.define(…)`, `observedAttributes()` and `attributeChangedCallback(…)` with the cleaner decorators `@define(…)` and `@attribute(…)`.
+Replaces the web component functions `customElements.define(…)`, `observedAttributes()` and `attributeChangedCallback(…)` with decorators `@define(…)` and `@attribute(…)`.
 
 Advantages over other solutions:
+
 - Includes Typescript definitions
-- Lightweight
-- Non opinionated
 - Extend any HTML element
+- Non opinionated
+- Lightweight
+- Cleaner code
 
 ## Installation
 
@@ -19,6 +21,7 @@ npm install --save-dev web-component-decorator
 ```
 
 ## Example
+
 ```ts
 import { attribute, CustomElement, define } from "web-component-decorator";
 
@@ -48,7 +51,9 @@ class MyButton extends HTMLElement implements CustomElement {
 
   @attribute("icon")
   setIcon(icon: string, oldIcon: string) {
-    this.shadowRoot.getElementById("icon").setAttribute('src', `icons/${icon}-24px.svg`);
+    this.shadowRoot
+      .getElementById("icon")
+      .setAttribute("src", `icons/${icon}-24px.svg`);
   }
 }
 ```
@@ -63,9 +68,9 @@ This example can be found in the `demo` directory in the repository.
 
 #### Parameters
 
-| Name       | Type                           | Description                                                                |
-| ---------- | ------------------------------ | -------------------------------------------------------------------------- |
-| tagname | string | Name of the tag to use. Should include a '-' (minus) |
+| Name    | Type              | Description                                                                                     |
+| ------- | ----------------- | ----------------------------------------------------------------------------------------------- |
+| tagname | string            | Name of the tag to use. Should include a '-' (minus)                                            |
 | options | object (optional) | Object with the form `{ extends: string }`, where extends is the name of the HTML tag to extend |
 
 Replacement for `customElements.define(tagname, classname, options)`.
@@ -75,11 +80,11 @@ To be put right above the class declaration of the web component.
 
 ### `@attribute(attributename)`
 
-| Name       | Type                           | Description                                                                |
-| ---------- | ------------------------------ | -------------------------------------------------------------------------- |
+| Name          | Type   | Description           |
+| ------------- | ------ | --------------------- |
 | attributename | string | Name of the attribute |
 
-Replacement for `observedAttributes()` and `attributeChangedCallback(…)`. 
+Replacement for `observedAttributes()` and `attributeChangedCallback(…)`.
 
 The decorated function of setter has the following signature:
 
