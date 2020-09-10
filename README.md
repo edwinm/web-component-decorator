@@ -57,24 +57,35 @@ This example can be found in the `demo` directory in the repository.
 
 ## API
 
+### Define custom element
+
 ### `@define(tagname [, options])`
 
-**`tagname: string`** - Name of the tag to use. Should include a '-' (minus)
+#### Parameters
 
-**`options: object` (optional)** - Object with the form `{ extends: string }`, where extends is the name of the HTML tag to extend.
+| Name       | Type                           | Description                                                                |
+| ---------- | ------------------------------ | -------------------------------------------------------------------------- |
+| tagname | string | Name of the tag to use. Should include a '-' (minus) |
+| options | object (optional) | Object with the form `{ extends: string }`, where extends is the name of the HTML tag to extend |
 
 Replacement for `customElements.define(tagname, classname, options)`.
 To be put right above the class declaration of the web component.
 
+### Observe attributes
+
 ### `@attribute(attributename)`
 
-**`attributename: string`** - Name of the attribute.
+| Name       | Type                           | Description                                                                |
+| ---------- | ------------------------------ | -------------------------------------------------------------------------- |
+| attributename | string | Name of the attribute |
 
 Replacement for `observedAttributes()` and `attributeChangedCallback(…)`. 
 
 The decorated function of setter has the following signature:
 
 **`anyName(newValue: string, oldValue:string): void`** - Function to be called with the new and old value of the attribute.
+
+### Interface
 
 ### `CustomElement`
 
@@ -86,4 +97,4 @@ In `tsconfig.json`, don't forget to add `"experimentalDecorators": true` to `com
 
 ## License
 
-MIT © 2020 [Edwin Martin](https://bitstorm.org/)
+Copyright 2020 [Edwin Martin](https://bitstorm.org/) and released under the MIT license.
