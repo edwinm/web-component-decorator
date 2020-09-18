@@ -86,9 +86,13 @@ To be put right above the class declaration of the web component.
 
 Replacement for `observedAttributes()` and `attributeChangedCallback(…)`.
 
-The decorated function of setter has the following signature:
+The decorated function has the following signature:
 
-**`anyName(newValue: string, oldValue:string): void`** - Function to be called with the new and old value of the attribute.
+**`anyName(newValue: string, oldValue:string): void`** - Function to be called when an attributte changes, with the new and old value of the attribute.
+
+A setter can also be decorated:
+
+**`set anyName(value: string): void`** - Function to be called when an attributte changes, with the new value of the attribute.
 
 ### Interface
 
