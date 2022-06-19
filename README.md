@@ -100,9 +100,10 @@ A setter can also be decorated:
 
 Interface to implement to get access to the web component type definitions.
 
-## Tip
+## experimentalDecorators
 
-In `tsconfig.json`, don't forget to add `"experimentalDecorators": true` to `compilerOptions`.
+> **Note**
+> In `tsconfig.json`, don't forget to add `"experimentalDecorators": true` to `compilerOptions`.
 
 ## License
 
