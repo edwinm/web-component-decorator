@@ -1,6 +1,6 @@
 /*
  web-component-decorator 1.1.1
- @copyright 2020 Edwin Martin
+ @copyright 2023 Edwin Martin
  @license MIT
  */
 
@@ -23,18 +23,19 @@ export function attribute(attr: string) {
   ): PropertyDescriptor {
     const prop = propertyDescriptor.value ? "value" : "set";
 
-    if (target.constructor[attrSymbol]) {
-      target.constructor.observedAttributes.push(attr);
-      target.constructor[attrSymbol].set(attr, propertyDescriptor[prop]);
+    const constructor =
+      target.constructor as unknown as CustomElementConstructorType;
+
+    if (constructor[attrSymbol]) {
+      constructor.observedAttributes.push(attr);
+      constructor[attrSymbol].set(attr, propertyDescriptor[prop]);
     } else {
-      target.constructor.observedAttributes = [attr];
-      target.constructor[attrSymbol] = new Map([
-        [attr, propertyDescriptor[prop]],
-      ]);
+      constructor.observedAttributes = [attr];
+      constructor[attrSymbol] = new Map([[attr, propertyDescriptor[prop]]]);
     }
 
     target.attributeChangedCallback = function (attr, oldValue, newValue) {
-      target.constructor[attrSymbol].get(attr).call(this, newValue, oldValue);
+      constructor[attrSymbol].get(attr).call(this, newValue, oldValue);
     };
 
     return propertyDescriptor;
@@ -42,9 +43,7 @@ export function attribute(attr: string) {
 }
 
 export interface CustomElement {
-  constructor: Function & {
-    observedAttributes?: string[];
-  };
+  constructor: Function;
 
   attributeChangedCallback?(
     attributeName: string,
@@ -56,3 +55,8 @@ export interface CustomElement {
 
   disconnectedCallback?(): void;
 }
+
+export type CustomElementConstructorType = Function & {
+  [index: symbol]: Map<string, any>;
+  observedAttributes: string[];
+};
