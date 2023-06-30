@@ -1,4 +1,4 @@
-![test](https://github.com/edwinm/web-component-decorator/workflows/Test/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/edwinm/web-component-decorator/badge.svg?branch=master)](https://coveralls.io/github/edwinm/web-component-decorator?branch=master) [![CodeFactor](https://www.codefactor.io/repository/github/edwinm/web-component-decorator/badge)](https://www.codefactor.io/repository/github/edwinm/web-component-decorator) [![Size](https://img.shields.io/github/size/edwinm/web-component-decorator/dist/bundle.min.js)](https://github.com/edwinm/web-component-decorator/blob/master/dist/bundle.min.js) [![npm version](https://badge.fury.io/js/web-component-decorator.svg)](https://www.npmjs.com/package/web-component-decorator) [![GitHub](https://img.shields.io/github/license/edwinm/web-component-decorator.svg)](https://github.com/edwinm/web-component-decorator/blob/master/LICENSE)
+![test](https://github.com/edwinm/web-component-decorator/workflows/Test/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/edwinm/web-component-decorator/badge.svg?branch=master)](https://coveralls.io/github/edwinm/web-component-decorator?branch=master) [![Socket Badge](https://socket.dev/api/badge/npm/package/web-component-decorator)](https://socket.dev/npm/package/web-component-decorator) [![CodeFactor](https://www.codefactor.io/repository/github/edwinm/web-component-decorator/badge)](https://www.codefactor.io/repository/github/edwinm/web-component-decorator) [![Size](https://img.shields.io/github/size/edwinm/web-component-decorator/dist/bundle.min.js)](https://github.com/edwinm/web-component-decorator/blob/master/dist/bundle.min.js) [![npm version](https://badge.fury.io/js/web-component-decorator.svg)](https://www.npmjs.com/package/web-component-decorator) [![GitHub](https://img.shields.io/github/license/edwinm/web-component-decorator.svg)](https://github.com/edwinm/web-component-decorator/blob/master/LICENSE)
 
 # Web component decorator
 
@@ -107,4 +107,4 @@ Interface to implement to get access to the web component type definitions.
 
 ## License
 
-Copyright 2020 [Edwin Martin](https://bitstorm.org/) and released under the MIT license.
+Copyright 2023 [Edwin Martin](https://bitstorm.org/) and released under the MIT license.
