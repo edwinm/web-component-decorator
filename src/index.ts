@@ -1,22 +1,25 @@
 /*
- web-component-decorator 1.1.0
+ web-component-decorator 1.1.1
  @copyright 2020 Edwin Martin
  @license MIT
  */
 
 const attrSymbol = Symbol();
 
-export function define(name: string, options?: ElementDefinitionOptions): (constructor: CustomElementConstructor) => void {
+export function define(
+  name: string,
+  options?: ElementDefinitionOptions
+): (constructor: CustomElementConstructor) => void {
   return (constructor: CustomElementConstructor) => {
     customElements.define(name, constructor, options);
   };
 }
 
 export function attribute(attr: string) {
-  return function(
+  return function (
     target: CustomElement,
     propertyName: string,
-    propertyDescriptor: PropertyDescriptor,
+    propertyDescriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const prop = propertyDescriptor.value ? "value" : "set";
 
@@ -30,7 +33,7 @@ export function attribute(attr: string) {
       ]);
     }
 
-    target.attributeChangedCallback = function(attr, oldValue, newValue) {
+    target.attributeChangedCallback = function (attr, oldValue, newValue) {
       target.constructor[attrSymbol].get(attr).call(this, newValue, oldValue);
     };
 
@@ -46,7 +49,7 @@ export interface CustomElement {
   attributeChangedCallback?(
     attributeName: string,
     oldValue: string,
-    newValue: string,
+    newValue: string
   ): void;
 
   connectedCallback?(): void;
