@@ -7,5 +7,5 @@ coverage
 # don't lint demo
 demo
 # don't lint configuration files
-.eslintrc.js
+.eslintrc.cjs
 karma.conf.cjs

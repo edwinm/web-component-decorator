@@ -15,7 +15,8 @@
     "release": "npm i --package-lock && npm run lint && npm test && npm run build && npm publish",
     "test": "karma start  karma.conf.cjs --browsers ChromeHeadless,FirefoxHeadless",
     "lint": "eslint . --ext .js,.ts",
-    "build-demo": "rollup --config demo/rollup.config.js"
+    "build-demo": "rollup --config demo/rollup.config.js",
+    "prettier": "prettier --config .prettierrc.json src/*.ts *.json --write"
   },
   "repository": {
     "type": "git",
@@ -71,9 +72,7 @@
     "rollup": "^3.26.0",
     "rollup-plugin-typescript2": "^0.35.0",
     "tslib": "^2.6.0",
-    "typescript": "^5.1.6"
-  },
-  "dependencies": {
+    "typescript": "^5.1.6",
     "@rollup/plugin-terser": "^0.4.3"
   }
 }
