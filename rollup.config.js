@@ -1,4 +1,4 @@
-import typescript from "rollup-plugin-typescript2";
+import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
 
 export default {
@@ -12,9 +12,7 @@ export default {
     },
   ],
   plugins: [
-    typescript({
-      clean: true,
-    }),
+    typescript({ declarationDir: "dist", module: "ES2015", rootDir: "src" }),
     terser(),
   ],
 };
