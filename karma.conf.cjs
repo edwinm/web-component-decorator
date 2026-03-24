@@ -17,5 +17,8 @@ module.exports = function (config) {
       reporters: [{ type: "lcov", subdir: "." }],
       dir: "coverage/",
     },
+    karmaTypescriptConfig: {
+      tsconfig: "./tsconfig.test.json",
+    },
   });
 };

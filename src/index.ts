@@ -35,7 +35,7 @@ export function attribute(attr: string) {
     }
 
     target.attributeChangedCallback = function (attr, oldValue, newValue) {
-      constructor[attrSymbol].get(attr).call(this, newValue, oldValue);
+      constructor[attrSymbol]!.get(attr).call(this, newValue, oldValue);
     };
 
     return propertyDescriptor;
