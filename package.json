@@ -9,6 +9,7 @@
   "sideEffects": false,
   "scripts": {
     "prepare": "husky",
+    "postinstall": "patch-package",
     "start": "http-server -o demo/ --silent",
     "build": "rollup --config --sourcemap && move-cli dist/index.d.ts dist/bundle.min.d.ts",
     "dev": "rollup --config --sourcemap --watch",
@@ -69,6 +70,7 @@
     "karma-typescript": "^5.5.4",
     "mocha": "^11.7.5",
     "move-cli": "^2.0.0",
+    "patch-package": "^8.0.1",
     "prettier": "^3.8.1",
     "pretty-quick": "^4.2.2",
     "rollup": "^4.60.0",
