@@ -3,3 +3,5 @@ node_modules
 coverage/lcov-report
 coverage/Chrome*
 coverage/Firefox*
+test-dist/
+playwright-report/
