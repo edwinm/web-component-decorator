@@ -1,6 +1,7 @@
 import { attribute, CustomElement, define } from "../src/index.js";
 
 @define("test-button")
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 class TestButton extends HTMLElement implements CustomElement {
   private icon = "";
   private buttonSize = "";
