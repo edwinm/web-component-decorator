@@ -6,9 +6,10 @@ export default tseslint.config(
     ignores: [
       "node_modules/**",
       "dist/**",
+      "test-dist/**",
       "coverage/**",
       "demo/**",
-      "karma.conf.cjs",
+      "playwright-report/**",
     ],
   },
   tseslint.configs.recommended,
