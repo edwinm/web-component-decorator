@@ -1,4 +1,4 @@
-import typescript from "rollup-plugin-typescript2";
+import typescript from "@rollup/plugin-typescript";
 
 export default {
   input: "demo/my-button.ts",
@@ -10,9 +10,5 @@ export default {
       sourcemap: true,
     },
   ],
-  plugins: [
-    typescript({
-      clean: true,
-    }),
-  ],
+  plugins: [typescript({ tsconfig: "./demo/tsconfig.json" })],
 };
