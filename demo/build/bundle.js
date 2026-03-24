@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  /*! *****************************************************************************
+  /******************************************************************************
     Copyright (c) Microsoft Corporation.
 
     Permission to use, copy, modify, and/or distribute this software for any
@@ -15,6 +15,7 @@
     OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
     PERFORMANCE OF THIS SOFTWARE.
     ***************************************************************************** */
+  /* global Reflect, Promise, SuppressedError, Symbol, Iterator */
 
   function __decorate(decorators, target, key, desc) {
     var c = arguments.length,
@@ -22,8 +23,8 @@
         c < 3
           ? target
           : desc === null
-          ? (desc = Object.getOwnPropertyDescriptor(target, key))
-          : desc,
+            ? (desc = Object.getOwnPropertyDescriptor(target, key))
+            : desc,
       d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
       r = Reflect.decorate(decorators, target, key, desc);
@@ -31,38 +32,45 @@
       for (var i = decorators.length - 1; i >= 0; i--)
         if ((d = decorators[i]))
           r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+    return (c > 3 && r && Object.defineProperty(target, key, r), r);
   }
 
-  function __metadata(metadataKey, metadataValue) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-      return Reflect.metadata(metadataKey, metadataValue);
-  }
+  typeof SuppressedError === "function"
+    ? SuppressedError
+    : function (error, suppressed, message) {
+        var e = new Error(message);
+        return (
+          (e.name = "SuppressedError"),
+          (e.error = error),
+          (e.suppressed = suppressed),
+          e
+        );
+      };
 
   /*
      web-component-decorator
-     @copyright 2020 Edwin Martin
+     @copyright 2023-2026 Edwin Martin
      @license MIT
      */
   const t = Symbol();
-  function r(t, r) {
+  function e(t, e) {
     return (n) => {
-      customElements.define(t, n, r);
+      customElements.define(t, n, e);
     };
   }
-  function n(r) {
-    return function (n, o, e) {
-      const c = e.value ? "value" : "set";
+  function n(e) {
+    return function (n, u, r) {
+      const o = r.value ? "value" : "set",
+        s = n.constructor;
       return (
-        n.constructor[t]
-          ? (n.constructor.observedAttributes.push(r),
-            n.constructor[t].set(r, e[c]))
-          : ((n.constructor.observedAttributes = [r]),
-            (n.constructor[t] = new Map([[r, e[c]]]))),
-        (n.attributeChangedCallback = function (r, o, e) {
-          n.constructor[t].get(r).call(this, e, o);
-        }),
-        e
+        s[t]
+          ? (s.observedAttributes.push(e), s[t].set(e, r[o]))
+          : ((s.observedAttributes = [e]),
+            (s[t] = new Map([[e, r[o]]])),
+            (n.attributeChangedCallback = function (e, n, u) {
+              s[t].get(e).call(this, u, n);
+            })),
+        r
       );
     };
   }
@@ -100,20 +108,7 @@
         .setAttribute("src", `icons/${icon}-24px.svg`);
     }
   };
-  __decorate(
-    [
-      n("icon"),
-      __metadata("design:type", Function),
-      __metadata("design:paramtypes", [String, String]),
-      __metadata("design:returntype", void 0),
-    ],
-    MyButton.prototype,
-    "setIcon",
-    null
-  );
-  MyButton = __decorate(
-    [r("my-button"), __metadata("design:paramtypes", [])],
-    MyButton
-  );
+  __decorate([n("icon")], MyButton.prototype, "setIcon", null);
+  MyButton = __decorate([e("my-button")], MyButton);
 })();
 //# sourceMappingURL=bundle.js.map

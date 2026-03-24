@@ -11,8 +11,5 @@ export default {
       sourcemap: true,
     },
   ],
-  plugins: [
-    typescript({ declarationDir: "dist", module: "ES2015", rootDir: "src" }),
-    terser(),
-  ],
+  plugins: [typescript({ declarationDir: "dist", rootDir: "src" }), terser()],
 };

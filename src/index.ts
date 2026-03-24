@@ -1,6 +1,6 @@
 /*
- web-component-decorator 1.1.1
- @copyright 2023 Edwin Martin
+ web-component-decorator
+ @copyright 2023-2026 Edwin Martin
  @license MIT
  */
 
@@ -32,11 +32,11 @@ export function attribute(attr: string) {
     } else {
       constructor.observedAttributes = [attr];
       constructor[attrSymbol] = new Map([[attr, propertyDescriptor[prop]]]);
-    }
 
-    target.attributeChangedCallback = function (attr, oldValue, newValue) {
-      constructor[attrSymbol]!.get(attr).call(this, newValue, oldValue);
-    };
+      target.attributeChangedCallback = function (attr, oldValue, newValue) {
+        constructor[attrSymbol]!.get(attr).call(this, newValue, oldValue);
+      };
+    }
 
     return propertyDescriptor;
   };
